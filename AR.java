@@ -1,5 +1,12 @@
 package lepackage;
 
+/**
+ * AR est la classe comprenant toutes les données pour un aller retour.
+ *
+ * @author Clément Sébillet
+ * @version 5.0
+ */
+
 public class AR extends Tarif{
 
 	private double tarifARJS;

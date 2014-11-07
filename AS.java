@@ -1,5 +1,12 @@
 package lepackage;
 
+/**
+ * AS est la classe comprenant toutes les données pour un aller simple.
+ *
+ * @author Clément Sébillet
+ * @version 5.0
+ */
+
 public class AS extends Tarif{
 
 	private double tarifASJS;

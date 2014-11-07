@@ -1,68 +1,83 @@
 package lepackage;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Saisie {
 
-	Scanner deptObjet = new Scanner(System.in);
+	private String typeduTrajet, jour, heure;
+	private int dept, dureeDepl, nbkm;
 
-	private String trajet, dateDep, heureDep;
-	private int numDept, heurePar, nbKm;
+	//Accesseurs
+
+		public String getTypeduTrajet(){
+			return typeduTrajet;
+		}
+
+		public String getJour(){
+			return jour;
+		}
+		public String getHeure(){
+			return heure;
+		}
+		public int getDept(){
+			return dept;
+		}
+		public int getDureeDepl(){
+			return dureeDepl;
+		}
+		public int getNbkm(){
+			return nbkm;
+		}
+	//Modifieurs
+
+		public void setTypeduTrajet(String TT){
+			this.typeduTrajet = TT;
+		}
+
+		public void setJour(String J){
+			this.jour = J;
+		}
+		public void setHeure(String H){
+			this.heure = H;
+		}
+			public void setDept(int D){
+				this.dept = D;
+
+			}
+			public void setDureeDepl(int DD){
+				this.dureeDepl = DD;
+			}
+
+			public void setNbkm(int NB){
+				this.nbkm = NB;
+			}
 
 
-	//*************   ACCESSEURS *************
-	public String getTrajet()
-	{
-	    return trajet;
-	}
+			public Saisie(List<AR> AR) //Methode saisie entrées
+			{
+				 Scanner saisies = new Scanner(System.in);
+				System.out.print("Veuillez saisir le numero de departement (21 - 25 - 39 - 44 - 72 - 73 - 74 - 75 - 85 - 90 : ");
+				dept = saisies.nextInt();
 
-	public String getDateDep()
-	{
-	    return dateDep;
-	}
 
-	public String getHeureDep()
-	{
-	    return heureDep;
-	}
+		        System.out.print("Veuillez saisir le type de votre déplacement (AS -- AR) : ");
+		        typeduTrajet = saisies.next();
 
-	public int getNumDept()
-	{
-	    return numDept;
-	}
+		        System.out.print("Veuillez saisir le jour de votre déplacement (S: Semaine / W: Week-end) : ");
+		        jour = saisies.next();
 
-	public void setNumDept(int d)
-	{
-	    numDept = d;
-	}
+		        System.out.print("Veuillez saisir l'heure de votre déplacement (J - Jours: < 20h -- N - Nuit: > 20h) : ");
+		        heure = saisies.next();
 
-	public int getHeurePar()
-	{
-	    return heurePar;
-	}
+		        System.out.print("Veuillez saisir la durée de votre déplacement en Minutes : ");
+		        dureeDepl = saisies.nextInt();
 
-	public int getNbKm()
-	{
-	    return nbKm;
-	}
+		        System.out.print("Veuillez saisir le nombre de kilomètres parcourus lors de votre déplacement : ");
+		        nbkm = saisies.nextInt();
 
-	public Saisie(){
-	System.out.println("Veuillez saisir le departement :");
-	numDept = deptObjet.nextInt();
 
-	System.out.println("Veuillez saisir le type de deplacement (AS ou AR) :");
-	trajet = deptObjet.next();
+			}
 
-	System.out.println("Veuillez saisir le jour de deplacement (S ou WE) :");
-	dateDep = deptObjet.next();
+		}
 
-	System.out.println("Veuillez saisir l'heure du deplacement (J ou N) :");
-	heureDep = deptObjet.next();
-
-	System.out.println("Veuillez saisir le temps du parcours (arrondi a  l'heure inferieure) :");
-	heurePar = deptObjet.nextInt();
-
-	System.out.println("Veuillez saisir le nb km parcouru :");
-	nbKm = deptObjet.nextInt();
-	}
-}

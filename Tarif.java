@@ -1,5 +1,12 @@
 package lepackage;
 
+/**
+ * Tarif est la classe comprenant toutes les données pour un déplacement sans faire la distinction entre aller simple ou aller retour.
+ *
+ * @author Clément Sébillet
+ * @version 5.0
+ */
+
 public class Tarif {
 
 	private int dept;
@@ -8,6 +15,11 @@ public class Tarif {
 	private double horaireNW;
 
 	//*************   ACCESSEURS    *************
+	/**
+     * Accesseur du numéro du département.
+     *
+     * @return Une instance de SDZLevel, qui correspond à niveau du membre sur SDZ.
+     */
 	public int getDept()
 	{
 	    return dept;

@@ -1,49 +1,63 @@
 package lepackage;
 import java.util.List;
 
+/**
+ * Calcul est la classe comprenant le calcul du remboursement.
+ *
+ * @author Clément Sébillet
+ * @version 5.0
+ */
+
 public class Calcul {
-	public static double calculer(int i, List<AR> maListeAR, List<AS> maListeAS , Saisie maSaisie)
+
+	/**
+     * Retourne le montant du remboursement.
+     *
+     * @return un décimal montantRemb, qui correspond au montant du remboursement.
+     */
+
+	public static double calculer(int i, List<AR> maListeAR, List<AS> maListeAS , boolean rdbtnAr, boolean rdbtnAs, boolean rdbtnJ, boolean rdbtnN, boolean rdbtnS, boolean rdbtnWe, int txtTemps, int txtKm)
 	{
 		double montantRemb = 0;
 
 		//Calcul remboursement
 				//Si c'est un aller simple
-				if(maSaisie.getTrajet().equals("AS")){
+				if(rdbtnAs){
 					//Si c'est en semaine de jour
-					if(maSaisie.getDateDep().equals("S") && maSaisie.getHeureDep().equals("J")){
-						montantRemb = maListeAS.get(i).getPriseEnCharge() + (maSaisie.getNbKm() * maListeAS.get(i).getTarifASJS());
+					if(rdbtnS && rdbtnJ){
+						montantRemb = maListeAS.get(i).getPriseEnCharge() + (txtKm * maListeAS.get(i).getTarifASJS());
 
 						//Si le trajet dépasse 1h
-						if(maSaisie.getHeurePar() > 1){
-							montantRemb += montantRemb + (maSaisie.getHeurePar() * maListeAS.get(i).getHoraireJS());
+						if(txtTemps > 1){
+							montantRemb += montantRemb + (txtTemps * maListeAS.get(i).getHoraireJS());
 						}
 					}else
 					//Sinon c'est de semaine de nuit ou en WE
-					if((maSaisie.getDateDep().equals("S") && maSaisie.getHeureDep().equals("N")) || maSaisie.getDateDep().equals("WE")){
-						montantRemb = maListeAS.get(i).getPriseEnCharge() + (maSaisie.getNbKm() * maListeAS.get(i).getTarifASNW());
+					if((rdbtnS && rdbtnN) || rdbtnWe){
+						montantRemb = maListeAS.get(i).getPriseEnCharge() + (txtKm * maListeAS.get(i).getTarifASNW());
 
 						//Si le trajet dépasse 1h
-						if(maSaisie.getHeurePar() > 1){
-							montantRemb += montantRemb + (maSaisie.getHeurePar() * maListeAS.get(i).getHoraireNW());
+						if(txtTemps > 1){
+							montantRemb += montantRemb + (txtTemps * maListeAS.get(i).getHoraireNW());
 						}
 					}
 				}else
 					//Si c'est en semaine de jour
-					if(maSaisie.getDateDep().equals("S") && maSaisie.getHeureDep().equals("J")){
-						montantRemb = maListeAR.get(i).getPriseEnCharge() + (maSaisie.getNbKm() * maListeAR.get(i).getTarifARJS());
+					if(rdbtnS && rdbtnJ){
+						montantRemb = maListeAR.get(i).getPriseEnCharge() + (txtKm * maListeAR.get(i).getTarifARJS());
 
 						//Si le trajet dépasse 1h
-						if(maSaisie.getHeurePar() > 1){
-							montantRemb += montantRemb + (maSaisie.getHeurePar() * maListeAR.get(i).getHoraireJS());
+						if(txtTemps > 1){
+							montantRemb += montantRemb + (txtTemps * maListeAR.get(i).getHoraireJS());
 						}
 					}else
 					//Sinon c'est de semaine de nuit ou en WE
-					if((maSaisie.getDateDep().equals("S") && maSaisie.getHeureDep().equals("N")) || maSaisie.getDateDep().equals("WE")){
-						montantRemb = maListeAR.get(i).getPriseEnCharge() + (maSaisie.getNbKm() * maListeAR.get(i).getTarifARNW());
+					if((rdbtnS && rdbtnN) || rdbtnWe){
+						montantRemb = maListeAR.get(i).getPriseEnCharge() + (txtKm * maListeAR.get(i).getTarifARNW());
 
 						//Si le trajet dépasse 1h
-						if(maSaisie.getHeurePar() > 1){
-							montantRemb += montantRemb + (maSaisie.getHeurePar() * maListeAR.get(i).getHoraireNW());
+						if(txtTemps > 1){
+							montantRemb = montantRemb + (txtTemps * maListeAR.get(i).getHoraireNW());
 						}
 				}
 
